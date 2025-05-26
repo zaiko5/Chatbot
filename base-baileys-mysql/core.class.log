@@ -1,0 +1,120 @@
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214792914518@s.whatsapp.net',
+    fromMe: false,
+    id: '3ACD851588E461FF69B7',
+    participant: undefined
+  },
+  messageTimestamp: 1748281849,
+  pushName: 'Yayo',
+  broadcast: false,
+  message: Message {
+    conversation: 'hola',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'hola',
+  from: '5214792914518'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_bafcb936-d3d3-490d-9f2e-15be0decbdff',
+  keyword: 'key_83b82fb8-45a3-4b80-912f-6fbe3e86667d',
+  answer: 'Hola, soy el asistente de IA de la UTL, ¿En que puedo ayudarte?',
+  options: {
+    media: null,
+    buttons: [],
+    capture: false,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: false
+  },
+  refSerialize: '36a8a77f6041a8c13dcc7162be5058cf'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_e8159a34-bef5-4b48-a3a7-2a57ae0f24c4',
+  keyword: 'ans_bafcb936-d3d3-490d-9f2e-15be0decbdff',
+  answer: 'Haz tu consulta',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: 'b7ea10ee30df460a1f56708d415e542d'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214792914518@s.whatsapp.net',
+    fromMe: false,
+    id: '3A49E020DD4623488C26',
+    participant: undefined
+  },
+  messageTimestamp: 1748281854,
+  pushName: 'Yayo',
+  broadcast: false,
+  message: Message {
+    conversation: 'carreras',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'carreras',
+  from: '5214792914518'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214792914518@s.whatsapp.net',
+    fromMe: false,
+    id: '3A72A691D13D1A7230E6',
+    participant: undefined
+  },
+  messageTimestamp: 1748281861,
+  pushName: 'Yayo',
+  broadcast: false,
+  message: Message {
+    conversation: 'si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'si',
+  from: '5214792914518'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214792914518@s.whatsapp.net',
+    fromMe: false,
+    id: '3A1C719237DFF7CA1B75',
+    participant: undefined
+  },
+  messageTimestamp: 1748281870,
+  pushName: 'Yayo',
+  broadcast: false,
+  message: Message {
+    conversation: 'horarios',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'horarios',
+  from: '5214792914518'
+}
