@@ -1,5 +1,7 @@
-const { createBot, createProvider, createFlow, addKeyword } = require('@bot-whatsapp/bot')
+const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@bot-whatsapp/bot')
 require("dotenv").config();
+console.log("Variables de entorno cargadas:", process.env.MYSQL_DB_HOST); // Agrega esta línea
+
 
 const QRPortalWeb = require('@bot-whatsapp/portal')
 const BaileysProvider = require('@bot-whatsapp/provider/baileys')
@@ -9,13 +11,13 @@ const MySQLAdapter = require('@bot-whatsapp/database/mysql')
 const path = require("path");
 const fs = require("fs");
 const chat = require("./chatGPT");
-const guardarConsulta = require("./controllers")
+const guardarConsulta = require("./consultas.controllers.js")
 
 // Leer archivos
 const saludoPath = path.join(__dirname, "mensajes", "saludo.txt");
 const saludo = fs.readFileSync(saludoPath, "utf8");
 
-const pathConsultas = path.join(__dirname, "mensajes", "promptConsultas.txt");
+const pathConsultas = path.join(__dirname, "mensajes", "promptConsulta.txt");
 const promptConsultas = fs.readFileSync(pathConsultas, "utf8");
 
 const seguirConsultandoPath = path.join(__dirname, "mensajes", "seguirConsultando.txt");
@@ -75,7 +77,7 @@ const flowEntrada = addKeyword(['hola', 'hi', 'hello', 'hol', 'Hola'])
     .addAnswer("Haz tu consulta", {capture : true}, async(ctx, ctxFn) => {
         const consulta = ctx.body;
         
-        const respuestaClasificacionRaw = await (promptOrganizar, consulta);
+        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
         const clasificacionTexto = respuestaClasificacionRaw.trim();
 
         let subtemaId = null;
@@ -102,11 +104,11 @@ const flowEntrada = addKeyword(['hola', 'hi', 'hello', 'hol', 'Hola'])
     
 const main = async () => {
     const adapterDB = new MySQLAdapter({
-        host: MYSQL_DB_HOST,
-        user: MYSQL_DB_USER,
-        database: MYSQL_DB_NAME,
-        password: MYSQL_DB_PASSWORD,
-        port: MYSQL_DB_PORT,
+        host: process.env.MYSQL_DB_HOST,
+        user: process.env.MYSQL_DB_USER,
+        database: process.env.MYSQL_DB_NAME,
+        password: process.env.MYSQL_DB_PASSWORD,
+        port: parseInt(process.env.MYSQL_DB_PORT || '3306'),
     })
     const adapterFlow = createFlow([flowSeguirConsultando,flowEntrada ,flowConsultas])
     const adapterProvider = createProvider(BaileysProvider)
