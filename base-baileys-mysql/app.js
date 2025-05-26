@@ -36,6 +36,7 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
             return gotoFlow(flowDespedida);
         }
     });
+    
     // Flujo por si el usuario dice "no"
 const flowDespedida = addKeyword(EVENTS.ACTION)
     .addAnswer('Gracias por usar el bot. ¡Hasta luego! 👋');
