@@ -25,7 +25,7 @@ async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
         // Insertar respuesta
         await conn.query(`
             INSERT INTO respuestas (consulta_id, mensaje)
-            VALUES (?, ?)`, [consulta_id, respuesta]);
+            VALUES (?, ?)`, [consulta_id, respuesta.content]);
 
     } catch (error) {
         console.error("Error al guardar en la base de datos:", error);
