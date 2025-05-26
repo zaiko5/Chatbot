@@ -9,6 +9,7 @@ const MySQLAdapter = require('@bot-whatsapp/database/mysql')
 const path = require("path");
 const fs = require("fs");
 const chat = require("./chatGPT");
+const guardarConsulta = require("./controllers")
 
 // Leer archivos
 const saludoPath = path.join(__dirname, "mensajes", "saludo.txt");
@@ -19,6 +20,9 @@ const promptConsultas = fs.readFileSync(pathConsultas, "utf8");
 
 const seguirConsultandoPath = path.join(__dirname, "mensajes", "seguirConsultando.txt");
 const seguirConsulta = fs.readFileSync(seguirConsultandoPath, "utf8");
+
+const promptOrganizarPath = path.join(__dirname, "mensajes", "promptOrganizar.txt");
+const promptOrganizar = fs.readFileSync(promptOrganizarPath, "utf8");
 
 
 const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
@@ -37,23 +41,64 @@ const flowDespedida = addKeyword(EVENTS.ACTION)
 // Flujo para cuando el usuario dice "sí"
 const flowConsultas = addKeyword(EVENTS.ACTION)
     .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, ctxFn) => {
-        const prompt = promptConsultas;
         const consulta = ctx.body;
-        const answer = await chat(prompt, consulta);
-        await ctxFn.flowDynamic(answer.content);
-        return ctxFn.gotoFlow(flowSeguirConsultando);
+
+        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
+        const clasificacionTexto = respuestaClasificacionRaw.trim();
+
+        let subtemaId = null;
+        const partesClasificacion = clasificacionTexto.split(' - ');
+        if (partesClasificacion.length > 0 && !clasificacionTexto.startsWith('0 -')){
+            const posibleSubtemaId = parseInt(partesClasificacion[0]);
+            if (!isNaN(posibleSubtemaId)){
+                subtemaId = posibleSubtemaId;
+            }
+        }
+
+        const respuestaConsultaRaw = await chat(promptConsultas, consulta);
+
+        await guardarConsulta({
+            numero: from,
+            mensaje: consulta,
+            subtema_id: subtemaId,
+            respuesta: respuestaConsultaRaw
+        });
+
+        await flowDynamic(respuestaConsultaRaw);
+        return gotoFlow(flowSeguirConsultando);
+
     });
 
 // Flujo inicial que responde a "hola", "hi", etc.
 const flowEntrada = addKeyword(['hola', 'hi', 'hello', 'hol', 'Hola'])
     .addAnswer(saludo)
     .addAnswer("Haz tu consulta", {capture : true}, async(ctx, ctxFn) => {
-        const prompt = promptConsultas;
         const consulta = ctx.body;
-        const answer = await chat(prompt, consulta);
-        await ctxFn.flowDynamic(answer.content);
-        return ctxFn.gotoFlow(flowSeguirConsultando);
-    })
+        
+        const respuestaClasificacionRaw = await (promptOrganizar, consulta);
+        const clasificacionTexto = respuestaClasificacionRaw.trim();
+
+        let subtemaId = null;
+        const partesClasificacion = clasificacionTexto.split(' - ');
+        if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
+            const posibleSubtemaId = parseInt(partesClasificacion[0]);
+            if (isNaN(posibleSubtemaId)){
+                subtemaId = posibleSubtemaId;
+            }
+        }
+
+        const respuestaConsultaRaw = await chat(promptConsultas, consulta);
+
+        await guardarConsulta({
+            numero: from,
+            mensaje: consulta,
+            subtema_id : subtemaId,
+            respuesta: respuestaConsultaRaw
+        });
+
+        await flowDynamic(respuestaConsultaRaw);
+        return gotoFlow(flowSeguirConsultando);
+    });
     
 const main = async () => {
     const adapterDB = new MySQLAdapter({
