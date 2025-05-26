@@ -1,6 +1,6 @@
 const db = require('./db');
 
-async function guardarConsulta({ numero, mensaje, subtema_id, prompt, respuesta }) {
+async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
     const conn = await db.getConnection();
 
     try {
@@ -15,16 +15,16 @@ async function guardarConsulta({ numero, mensaje, subtema_id, prompt, respuesta 
             usuario_id = insertResult.insertId;
         }
 
-        // Insertar consulta
+        // Insertar consulta (sin prompt_utilizado)
         const [consultaResult] = await conn.query(`
-            INSERT INTO consultas (usuario_id, mensaje, subtema_id, prompt_utilizado) 
-            VALUES (?, ?, ?, ?)`, [usuario_id, mensaje, subtema_id, prompt]);
+            INSERT INTO consultas (usuario_id, mensaje, subtema_id)
+            VALUES (?, ?, ?)`, [usuario_id, mensaje, subtema_id]);
 
         const consulta_id = consultaResult.insertId;
 
         // Insertar respuesta
         await conn.query(`
-            INSERT INTO respuestas (consulta_id, mensaje) 
+            INSERT INTO respuestas (consulta_id, mensaje)
             VALUES (?, ?)`, [consulta_id, respuesta]);
 
     } catch (error) {
@@ -33,3 +33,5 @@ async function guardarConsulta({ numero, mensaje, subtema_id, prompt, respuesta 
         conn.release();
     }
 }
+
+module.exports = guardarConsulta; // Asegúrate de exportar la función si está en un archivo separado
