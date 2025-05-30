@@ -32,13 +32,18 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         const respuesta = ctx.body.trim().toLowerCase();
         if (respuesta === 'si' || respuesta === 'sí'){
             return gotoFlow(flowConsultas);
-        } else {
+        } else if (respuesta === 'no'){
             return gotoFlow(flowDespedida);
         }
     });
+    
     // Flujo por si el usuario dice "no"
 const flowDespedida = addKeyword(EVENTS.ACTION)
-    .addAnswer('Gracias por usar el bot. ¡Hasta luego! 👋');
+    .addAnswer('Gracias por usar el bot. ¡Hasta luego! 👋')
+    .addAction(async({flowDynamic})=>{
+        await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
+    });
+
 
 // Flujo para cuando el usuario dice "sí"
 const flowConsultas = addKeyword(EVENTS.ACTION)
@@ -77,7 +82,7 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
     });
 
 // Flujo inicial que responde a "hola", "hi", etc.
-const flowEntrada = addKeyword(['hola', 'hi', 'hello', 'hol', 'Hola'])
+const flowEntrada = addKeyword([])
     .addAnswer(saludo)
     .addAnswer("Haz tu consulta", {capture : true}, async(ctx, {from:destructuredFrom, gotoFlow,flowDynamic}) => {
         const consulta = ctx.body;
