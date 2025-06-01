@@ -24,12 +24,19 @@ async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
         }
 
         // Insertar consulta (sin prompt_utilizado)
+        const ahora = new Date(); // <-- Esta línea es la que falta
+        const year = ahora.getFullYear();
+        const month = ahora.getMonth() + 1;  
+        const day = ahora.getDate();
         const [consultaResult] = await conn.query(`
-            INSERT INTO consultas (usuario_id, mensaje, subtema_id, tema_id)
-            VALUES (?, ?, ?, ?)`, [usuario_id, mensaje, subtema_id, tema_id]);
+            INSERT INTO consultas (usuario_id, mensaje, subtema_id, tema_id, day, month, year )
+            VALUES (?, ?, ?, ?, ?, ?, ?)`, [usuario_id, mensaje, subtema_id, tema_id, day, month, year]);
+        
 
         const consulta_id = consultaResult.insertId;
+        
 
+        
         // Insertar respuesta
         await conn.query(`
             INSERT INTO respuestas (consulta_id, mensaje)
