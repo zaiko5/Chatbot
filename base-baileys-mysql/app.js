@@ -11,7 +11,6 @@ const MySQLAdapter = require('@bot-whatsapp/database/mysql')
 const path = require("path");
 const fs = require("fs");
 const chat = require("./chatGPT");
-const guardarConsulta = require("./consultas.controllers.js")
 const { guardarConsulta, prompt } = require("./consultas.controllers.js"); // Correctly import both functions
 
 // Leer archivos
@@ -57,6 +56,7 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
         const promptR = await prompt(); 
+        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
         let subtemaId = null;
         const partesClasificacion = clasificacionTexto.split(' - ');
         if (partesClasificacion.length > 0 && !clasificacionTexto.startsWith('0 -')){
@@ -68,7 +68,7 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptR, consulta);
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
 
         await guardarConsulta({
             numero: from,
@@ -96,6 +96,7 @@ const flowEntrada = addKeyword([])
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
         const promptR = await prompt();
+        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
         let subtemaId = null;
         const partesClasificacion = clasificacionTexto.split(' - ');
         if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
@@ -107,7 +108,7 @@ const flowEntrada = addKeyword([])
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptR, consulta);
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
 
         await guardarConsulta({
             numero: from,

@@ -1,12 +1,12 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5214721542533@s.whatsapp.net',
+    remoteJid: '5214761243699@s.whatsapp.net',
     fromMe: false,
-    id: '1D9F2008012E3E70E271D61146900461',
+    id: '3A6E73D00202D108FFEE',
     participant: undefined
   },
-  messageTimestamp: 1749132249,
-  pushName: 'Axel:)',
+  messageTimestamp: 1749275887,
+  pushName: 'Mari',
   broadcast: false,
   message: Message {
     conversation: 'Hola',
@@ -17,12 +17,12 @@
     }
   },
   body: 'Hola',
-  from: '5214721542533'
+  from: '5214761243699'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_4f4db610-7920-4d1a-8e91-ff2121366b53',
-  keyword: 'key_a75a316f-32eb-47d4-bc61-0265e6be5dc8',
-  answer: 'Hola, soy el asistente de IA de la UTL, ¿En que puedo ayudarte?',
+  ref: 'ans_c964fb86-b1a7-45cb-8dbf-db740640c43d',
+  keyword: 'key_8c0c1a56-cf38-47f0-a89d-baf36add3b80',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
     buttons: [],
@@ -35,11 +35,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '5ead31bda29acbb0ceb2349a32696fcc'
+  refSerialize: 'ab78730bccb410a7f9f1a0e68c199e3f'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_8a149929-9a68-4223-94fd-690210cf6135',
-  keyword: 'ans_4f4db610-7920-4d1a-8e91-ff2121366b53',
+  ref: 'ans_d4e0af46-00f2-4fee-9f96-00dc15d13971',
+  keyword: 'ans_c964fb86-b1a7-45cb-8dbf-db740640c43d',
   answer: 'Haz tu consulta',
   options: {
     media: null,
@@ -53,17 +53,17 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '48f88f0592c0e7c85a48b5a3f8120706'
+  refSerialize: 'bf2c0d1b9c5d40dbec0078563a6be5a5'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214721542533@s.whatsapp.net',
+    remoteJid: '5214761243699@s.whatsapp.net',
     fromMe: false,
-    id: 'E5A6D9C8C92223A05C1E9021E3E028FB',
+    id: '3A3D9EA38055D8567570',
     participant: undefined
   },
-  messageTimestamp: 1749132256,
-  pushName: 'Axel:)',
+  messageTimestamp: 1749275888,
+  pushName: 'Mari',
   broadcast: false,
   message: Message {
     conversation: 'Carreras',
@@ -74,5 +74,47 @@
     }
   },
   body: 'Carreras',
-  from: '5214721542533'
+  from: '5214761243699'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214761243699@s.whatsapp.net',
+    fromMe: false,
+    id: '3A7A46EBA3455686209A',
+    participant: undefined
+  },
+  messageTimestamp: 1749275898,
+  pushName: 'Mari',
+  broadcast: false,
+  message: Message {
+    conversation: 'Si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Si',
+  from: '5214761243699'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214761243699@s.whatsapp.net',
+    fromMe: false,
+    id: '3A9B23FDF8558F7A2301',
+    participant: undefined
+  },
+  messageTimestamp: 1749275901,
+  pushName: 'Mari',
+  broadcast: false,
+  message: Message {
+    conversation: 'Costos',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Costos',
+  from: '5214761243699'
 }
