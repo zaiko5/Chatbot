@@ -15,7 +15,8 @@ INFORMACIÓN CATEGORIZADA:
 3 - Proceso de inscripción
     301 - Entrega de documentos
     302 - Reinscripción en línea
-
+    303 - Guia de estudio
+    
 4 - Otros procesos
     401 - Titulacion (Contacto)
     402 - Becas (Contacto)
@@ -27,9 +28,9 @@ RESPONDE SOLO CON EL NÚMERO DE CLASIFICACIÓN Y SU NOMBRE, POR EJEMPLO:
 "201 - Registro en línea"
 
 Si no puedes clasificar la consulta con la información proporcionada, responde:
-"0 - Fuera de contexto"
+0 - Fuera de contexto
 Y si no la puedes clasificar la consulta con la informacion proporcionada, pero es relativa a servicios escolares, responde:
-"5 - Sin Respuesta (Remitir a Servicios Escolares)"
+5 - Sin Respuesta (Remitir a Servicios Escolares)
 
 Y tambien si tienen faltas de ortografia, identifica a que subtema y tema tiene que ir ligado, para que no la mandes a el 0 por defecto, ya que necesito que esten ordenadas de todos modos con su tema y subtema porfavor
 

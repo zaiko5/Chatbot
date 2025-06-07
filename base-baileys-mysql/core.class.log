@@ -1,12 +1,12 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5214761243699@s.whatsapp.net',
+    remoteJid: '5214721542533@s.whatsapp.net',
     fromMe: false,
-    id: '3A3B7756DFFFF0622540',
+    id: '1D9F2008012E3E70E271D61146900461',
     participant: undefined
   },
-  messageTimestamp: 1748806019,
-  pushName: 'Mari',
+  messageTimestamp: 1749132249,
+  pushName: 'Axel:)',
   broadcast: false,
   message: Message {
     conversation: 'Hola',
@@ -17,11 +17,11 @@
     }
   },
   body: 'Hola',
-  from: '5214761243699'
+  from: '5214721542533'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_d9996a2a-512a-43d7-8e75-fe53274a8022',
-  keyword: 'key_2508c85b-f60b-4a8b-8552-4438ee4390fc',
+  ref: 'ans_4f4db610-7920-4d1a-8e91-ff2121366b53',
+  keyword: 'key_a75a316f-32eb-47d4-bc61-0265e6be5dc8',
   answer: 'Hola, soy el asistente de IA de la UTL, ¿En que puedo ayudarte?',
   options: {
     media: null,
@@ -35,11 +35,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '596377997b9b6e8f45dfdae1913b3b5e'
+  refSerialize: '5ead31bda29acbb0ceb2349a32696fcc'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_10911180-a167-4ee8-8763-6147e27514f3',
-  keyword: 'ans_d9996a2a-512a-43d7-8e75-fe53274a8022',
+  ref: 'ans_8a149929-9a68-4223-94fd-690210cf6135',
+  keyword: 'ans_4f4db610-7920-4d1a-8e91-ff2121366b53',
   answer: 'Haz tu consulta',
   options: {
     media: null,
@@ -53,17 +53,17 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '72ad6f93ee2a179cc3bc7d2c6b30fc52'
+  refSerialize: '48f88f0592c0e7c85a48b5a3f8120706'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214761243699@s.whatsapp.net',
+    remoteJid: '5214721542533@s.whatsapp.net',
     fromMe: false,
-    id: '3A43572925C0A7B28584',
+    id: 'E5A6D9C8C92223A05C1E9021E3E028FB',
     participant: undefined
   },
-  messageTimestamp: 1748806020,
-  pushName: 'Mari',
+  messageTimestamp: 1749132256,
+  pushName: 'Axel:)',
   broadcast: false,
   message: Message {
     conversation: 'Carreras',
@@ -74,68 +74,5 @@
     }
   },
   body: 'Carreras',
-  from: '5214761243699'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214761243699@s.whatsapp.net',
-    fromMe: false,
-    id: '3A2B54BCEDBDF60A4969',
-    participant: undefined
-  },
-  messageTimestamp: 1748806057,
-  pushName: 'Mari',
-  broadcast: false,
-  message: Message {
-    conversation: 'Si',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'Si',
-  from: '5214761243699'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214761243699@s.whatsapp.net',
-    fromMe: false,
-    id: '3AE55A83F9AE4D7DF1EA',
-    participant: undefined
-  },
-  messageTimestamp: 1748806073,
-  pushName: 'Mari',
-  broadcast: false,
-  message: Message {
-    conversation: 'Instrucciones para cargar documentos de admisión',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'Instrucciones para cargar documentos de admisión',
-  from: '5214761243699'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214761243699@s.whatsapp.net',
-    fromMe: false,
-    id: '3A2CD643FA6EC979491F',
-    participant: undefined
-  },
-  messageTimestamp: 1748806090,
-  pushName: 'Mari',
-  broadcast: false,
-  message: Message {
-    conversation: 'No',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'No',
-  from: '5214761243699'
+  from: '5214721542533'
 }
