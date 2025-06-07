@@ -12,13 +12,11 @@ const path = require("path");
 const fs = require("fs");
 const chat = require("./chatGPT");
 const guardarConsulta = require("./consultas.controllers.js")
+const { guardarConsulta, prompt } = require("./consultas.controllers.js"); // Correctly import both functions
 
 // Leer archivos
 const saludoPath = path.join(__dirname, "mensajes", "saludo.txt");
 const saludo = fs.readFileSync(saludoPath, "utf8");
-
-const pathConsultas = path.join(__dirname, "mensajes", "promptConsulta.txt");
-const promptConsultas = fs.readFileSync(pathConsultas, "utf8");
 
 const seguirConsultandoPath = path.join(__dirname, "mensajes", "seguirConsultando.txt");
 const seguirConsulta = fs.readFileSync(seguirConsultandoPath, "utf8");
@@ -35,11 +33,13 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         } else if (respuesta === 'no'){
             return gotoFlow(flowDespedida);
         }
+        await ctx.flowDynamic('No entendi tu respuesta. Por favor, di di "si" o "no"');
+        return gotoFlow(flowSeguirConsultando);
     });
     
     // Flujo por si el usuario dice "no"
 const flowDespedida = addKeyword(EVENTS.ACTION)
-    .addAnswer('Gracias por usar el bot. ¡Hasta luego! 👋')
+    .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
     .addAction(async({flowDynamic})=>{
         await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
     });
@@ -50,12 +50,13 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
     .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, {gotoFlow, flowDynamic, from: destructuredFrom}) => {
         const consulta = ctx.body;
         const from = destructuredFrom || ctx.from;
-        console.log("flowConsultas - Valor de 'from':", from); // AGREGAR ESTO
+        console.log("flowConsultas - Valor de 'from':", from); 
 
         const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
-        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); // <--- AGREGAR ESTO
+        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
+        const promptR = await prompt(); 
         let subtemaId = null;
         const partesClasificacion = clasificacionTexto.split(' - ');
         if (partesClasificacion.length > 0 && !clasificacionTexto.startsWith('0 -')){
@@ -67,13 +68,13 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptConsultas, consulta);
+        const respuestaConsultaRaw = await chat(promptR, consulta);
 
         await guardarConsulta({
             numero: from,
             mensaje: consulta,
             subtema_id: subtemaId,
-            respuesta: respuestaConsultaRaw.content
+            respuesta: respuestaConsultaRaw
         });
 
         await flowDynamic(respuestaConsultaRaw.content);
@@ -94,6 +95,7 @@ const flowEntrada = addKeyword([])
         console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); // <--- AGREGAR ESTO
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
+        const promptR = await prompt();
         let subtemaId = null;
         const partesClasificacion = clasificacionTexto.split(' - ');
         if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
@@ -105,7 +107,7 @@ const flowEntrada = addKeyword([])
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptConsultas, consulta);
+        const respuestaConsultaRaw = await chat(promptR, consulta);
 
         await guardarConsulta({
             numero: from,
