@@ -1,10 +1,11 @@
 const db = require('./db');
 
 function getCurrentWeek(){
-    const today = new Date();
-    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
-    const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
-    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1 ) / 7);
+    const ahora = new Date;
+    const año = ahora.getFullYear();
+    const mes = ahora.getMonth() + 1;  
+    const dia = ahora.getDate();
+    return semanaDelMes = Math.floor((dia - 1) / 7) + 1;z
 }
 
 async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
@@ -12,23 +13,24 @@ async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
 
     try {
         // Verificar o insertar usuario
-        let [rows] = await conn.query("SELECT id FROM usuarios WHERE numero_celular = ?", [numero]);
+        let [rows] = await conn.query("SELECT id FROM usuario WHERE numero_celular = ?", [numero]);
         let usuario_id;
 
         if (rows.length > 0) {
             usuario_id = rows[0].id;
         } else {
-            const [insertResult] = await conn.query("INSERT INTO usuarios (numero_celular) VALUES (?)", [numero]);
+            const [insertResult] = await conn.query("INSERT INTO usuario (numero_celular) VALUES (?)", [numero]);
             usuario_id = insertResult.insertId;
         }
         let tema_id = null;
         if (subtema_id !== null && subtema_id !== undefined) {
             // Obtener el tema_id desde la tabla subtemas
-            const [subtemaRows] = await conn.query("SELECT tema_id FROM subtemas WHERE id = ?", [subtema_id]);
+            const [subtemaRows] = await conn.query("SELECT tema_id FROM subtema WHERE id = ?", [subtema_id]);
             if (subtemaRows.length > 0) {
                 tema_id = subtemaRows[0].tema_id;
             }
         }
+        console.log(subtema_id)
 
         // Insertar consulta (sin prompt_utilizado)
         const ahora = new Date(); // <-- Esta línea es la que falta
@@ -37,7 +39,7 @@ async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
         const day = ahora.getDate();
         const week = getCurrentWeek();
         const [consultaResult] = await conn.query(`
-            INSERT INTO consultas (usuario_id, mensaje, subtema_id, tema_id, day, month, year, week )
+            INSERT INTO consulta (usuario_id, mensaje, subtema_id, tema_id, day, month, year, week )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?)`, [usuario_id, mensaje, subtema_id, tema_id, day, month, year, week]);
         
 
@@ -47,7 +49,7 @@ async function guardarConsulta({ numero, mensaje, subtema_id, respuesta }) {
         
         // Insertar respuesta
         await conn.query(`
-            INSERT INTO respuestas (consulta_id, mensaje)
+            INSERT INTO respuesta (consulta_id, mensaje)
             VALUES (?, ?)`, [consulta_id, respuesta.content]);
 
     } catch (error) {
@@ -62,7 +64,7 @@ async function getPrompt() {
     try {
         conn = await db.getConnection(); // Get a connection from the pool
 
-        const [rows] = await conn.query("SELECT id, prompt as content FROM prompts WHERE id = 1");
+        const [rows] = await conn.query("SELECT id, prompt as content FROM prompt WHERE id = 1");
 
         if (rows.length > 0) {
             return { id: 1, content: rows[0].content }; 
