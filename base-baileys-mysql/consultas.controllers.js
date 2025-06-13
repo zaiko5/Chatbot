@@ -81,7 +81,37 @@ async function getPrompt() {
     }
 }
 
+/**
+ * **NUEVA FUNCIÓN:** Obtiene la URL de una imagen asociada a un subtema.
+ * Consulta la tabla `subtema_imagenes` para encontrar la URL.
+ * @param {number} subtemaId El ID del subtema clasificado.
+ * @returns {string|null} La URL de la imagen o `null` si no hay imagen asociada.
+ */
+async function getImageUrlForSubtema(subtemaId) {
+    let conn;
+    try {
+        conn = await db.getConnection();
+        // Consulta la nueva tabla 'subtema_imagenes'
+        const [rows] = await conn.query("SELECT url_imagen FROM subtema_imagenes WHERE subtema_id = ?", [subtemaId]);
+
+        if (rows.length > 0) {
+            return rows[0].url_imagen;
+        } else {
+            return null; // No hay imagen asociada a este subtema
+        }
+    } catch (error) {
+        console.error("Error al obtener la URL de la imagen del subtema:", error);
+        return null;
+    } finally {
+        if (conn) {
+            conn.release();
+        }
+    }
+}
+
+
 module.exports = {
     guardarConsulta,
-    prompt: getPrompt // Export getPrompt as 'prompt' to match main.js import
+    prompt: getPrompt, // Export getPrompt as 'prompt' to match main.js import
+    getImageUrlForSubtema // Exporta la nueva 
 };
