@@ -25,16 +25,56 @@ const promptOrganizar = fs.readFileSync(promptOrganizarPath, "utf8");
 
 
 const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
-    .addAnswer(seguirConsulta, {capture: true },async(ctx, {gotoFlow})=>{
-        const respuesta = ctx.body.trim().toLowerCase();
-        if (respuesta === 'si' || respuesta === 'sí'){
-            return gotoFlow(flowConsultas);
-        } else if (respuesta === 'no'){
+    .addAnswer(seguirConsulta, { capture: true }, async (ctx, { gotoFlow, flowDynamic }) => {
+        const mensaje = ctx.body.trim().toLowerCase();
+        const from = ctx.from;
+
+        if (mensaje === 'no') {
             return gotoFlow(flowDespedida);
         }
-        await ctx.flowDynamic('No entendi tu respuesta. Por favor, di di "si" o "no"');
+
+        if (mensaje === 'si' || mensaje === 'sí') {
+            return gotoFlow(flowConsultas); //Manda a flowConsultas para preguntar sobre su siguiente consulta.
+        }
+
+        // Si no es "sí" o "no", lo tratamos como una consulta directamente
+        const consulta = ctx.body;
+        console.log("flowConsultas - Valor de 'from':", from); 
+
+        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
+        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
+        const clasificacionTexto = respuestaClasificacionRaw.content.trim();
+
+        const promptR = await prompt();
+        const promptTextForChat = promptR ? promptR.content : "";
+
+        let subtemaId = null;
+        const partesClasificacion = clasificacionTexto.split(' - ');
+        if (partesClasificacion.length > 0 && !clasificacionTexto.startsWith('0 -')) {
+            const posibleSubtemaId = parseInt(partesClasificacion[0]);
+            if (!isNaN(posibleSubtemaId)) {
+                subtemaId = posibleSubtemaId;
+            }
+        }
+        if (subtemaId === null) {
+            subtemaId = 0;
+        }
+
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
+
+        await guardarConsulta({
+            numero: from,
+            mensaje: consulta,
+            subtema_id: subtemaId,
+            respuesta: respuestaConsultaRaw,
+        });
+
+        await flowDynamic(respuestaConsultaRaw.content);
+
+        // Repetimos el flujo para seguir escuchando
         return gotoFlow(flowSeguirConsultando);
     });
+
     
     // Flujo por si el usuario dice "no"
 const flowDespedida = addKeyword(EVENTS.ACTION)
@@ -47,13 +87,15 @@ const flowDespedida = addKeyword(EVENTS.ACTION)
 // Flujo para cuando el usuario dice "sí"
 const flowConsultas = addKeyword(EVENTS.ACTION)
     .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, {gotoFlow, flowDynamic, from: destructuredFrom}) => {
-        const consulta = ctx.body;
         const from = destructuredFrom || ctx.from;
+        const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
         const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
         console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
+
+        
 
         const promptR = await prompt(); 
         const promptTextForChat = promptR ? promptR.content : ""; // Add this line
@@ -65,6 +107,7 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
                 subtemaId = posibleSubtemaId;
             }
         }
+        
         if (subtemaId ===null){
             subtemaId = 0;
         }
@@ -84,15 +127,13 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
 
 // Flujo inicial que responde a "hola", "hi", etc.
 const flowEntrada = addKeyword([])
-    .addAnswer(saludo)
-    .addAnswer("Haz tu consulta", {capture : true}, async(ctx, {from:destructuredFrom, gotoFlow,flowDynamic}) => {
-        const consulta = ctx.body;
+    .addAnswer(saludo, {capture : true}, async(ctx, {from:destructuredFrom, gotoFlow,flowDynamic}) => {
         const from = destructuredFrom || ctx.from;
-        console.log("flowEntrada - Valor de 'from':", from); // AGREGAR ESTO
+        const consulta = ctx.body;
+        console.log("flowConsultas - Valor de 'from':", from); 
 
-        
         const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
-        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); // <--- AGREGAR ESTO
+        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
         const promptR = await prompt();
