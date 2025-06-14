@@ -1,12 +1,12 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
+    remoteJid: '5214721552574@s.whatsapp.net',
     fromMe: false,
-    id: 'E97C6558D233A25AE564323729251A57',
+    id: '35320170541F52B9E1CB07617AF00FFE',
     participant: undefined
   },
-  messageTimestamp: 1749314567,
-  pushName: '☆Kenia☆^^',
+  messageTimestamp: 1749924624,
+  pushName: '𝐼𝑉𝑂𝑁𝑁𝐸 ♥︎',
   broadcast: false,
   message: Message {
     conversation: 'Hola',
@@ -17,11 +17,11 @@
     }
   },
   body: 'Hola',
-  from: '5214722437560'
+  from: '5214721552574'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e27db22c-e9dc-492c-9b5e-b4305c81c22c',
-  keyword: 'key_beb07f86-3532-4ece-9c57-848df123fa65',
+  ref: 'ans_36cfbb77-4e58-457c-8bb4-32ad1d105df8',
+  keyword: 'key_83d7b2d0-63e0-4b6c-8e36-9b09fa6c0178',
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
@@ -35,11 +35,11 @@
     keyword: {},
     callback: false
   },
-  refSerialize: '5bbf4a8f972f7b7a90a4789a595ed9c9'
+  refSerialize: '3088ae9019505e2497064448f7c5a617'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_7d4f128b-6e7b-418e-8491-6092e2d4989f',
-  keyword: 'ans_e27db22c-e9dc-492c-9b5e-b4305c81c22c',
+  ref: 'ans_69059117-e35c-44ac-8344-4fa65d42a583',
+  keyword: 'ans_36cfbb77-4e58-457c-8bb4-32ad1d105df8',
   answer: 'Haz tu consulta',
   options: {
     media: null,
@@ -53,47 +53,27 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'a439fb3c2ad5a59279a377b56e5a5886'
+  refSerialize: '937a366729538de13bb40fc873d49ff9'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
+    remoteJid: '5214721552574@s.whatsapp.net',
     fromMe: false,
-    id: '151241F8CB44CB22BC12C5306A80FAE2',
+    id: 'BC1DFC8EF059694AE528CF527A3A97F9',
     participant: undefined
   },
-  messageTimestamp: 1749314570,
-  pushName: '☆Kenia☆^^',
+  messageTimestamp: 1749924651,
+  pushName: '𝐼𝑉𝑂𝑁𝑁𝐸 ♥︎',
   broadcast: false,
   message: Message {
-    conversation: 'Que carreras tienes?',
+    conversation: 'En que podrías apoyar?',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
-  body: 'Que carreras tienes?',
-  from: '5214722437560'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
-    fromMe: false,
-    id: 'E5B09E79E23518F1C206B40E343C382C',
-    participant: undefined
-  },
-  messageTimestamp: 1749314577,
-  pushName: '☆Kenia☆^^',
-  broadcast: false,
-  message: Message {
-    conversation: 'No',
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'No',
-  from: '5214722437560'
+  status: 4,
+  body: 'En que podrías apoyar?',
+  from: '5214721552574'
 }
