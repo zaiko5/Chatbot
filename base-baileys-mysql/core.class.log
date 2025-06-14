@@ -1,46 +1,33 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
+    remoteJid: '5214725658628@s.whatsapp.net',
     fromMe: false,
-    id: 'E97C6558D233A25AE564323729251A57',
+    id: 'C0CF61927BA5AFE215E9272839A68466',
     participant: undefined
   },
-  messageTimestamp: 1749314567,
-  pushName: '☆Kenia☆^^',
+  messageTimestamp: 1749927921,
+  pushName: 'ElSpyn 🐤',
   broadcast: false,
   message: Message {
-    conversation: 'Hola',
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Ya',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
-  body: 'Hola',
-  from: '5214722437560'
+  body: 'Ya',
+  from: '5214725658628'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_e27db22c-e9dc-492c-9b5e-b4305c81c22c',
-  keyword: 'key_beb07f86-3532-4ece-9c57-848df123fa65',
+  ref: 'ans_e08416b0-29e3-4f85-b0bc-f6a113db93c3',
+  keyword: 'key_4c49f1cf-3956-4041-a2e0-f4cbcbed62d1',
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
-  options: {
-    media: null,
-    buttons: [],
-    capture: false,
-    child: null,
-    delay: 0,
-    idle: null,
-    ref: null,
-    nested: [],
-    keyword: {},
-    callback: false
-  },
-  refSerialize: '5bbf4a8f972f7b7a90a4789a595ed9c9'
-}
-[QUEUE_SE_ENVIO]:  {
-  ref: 'ans_7d4f128b-6e7b-418e-8491-6092e2d4989f',
-  keyword: 'ans_e27db22c-e9dc-492c-9b5e-b4305c81c22c',
-  answer: 'Haz tu consulta',
   options: {
     media: null,
     buttons: [],
@@ -53,38 +40,185 @@
     keyword: {},
     callback: true
   },
-  refSerialize: 'a439fb3c2ad5a59279a377b56e5a5886'
+  refSerialize: 'e291c37b8d5efca46441d6ff5b9b18f9'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
+    remoteJid: '5214725658628@s.whatsapp.net',
     fromMe: false,
-    id: '151241F8CB44CB22BC12C5306A80FAE2',
+    id: '3A3415DA138D59DAAC036505395E604C',
     participant: undefined
   },
-  messageTimestamp: 1749314570,
-  pushName: '☆Kenia☆^^',
+  messageTimestamp: 1749927934,
+  pushName: 'ElSpyn 🐤',
   broadcast: false,
   message: Message {
-    conversation: 'Que carreras tienes?',
+    conversation: 'Utl es?',
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
-  body: 'Que carreras tienes?',
-  from: '5214722437560'
+  body: 'Utl es?',
+  from: '5214725658628'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214722437560@s.whatsapp.net',
+    remoteJid: '5214725658628@s.whatsapp.net',
     fromMe: false,
-    id: 'E5B09E79E23518F1C206B40E343C382C',
+    id: 'FA3BEB0F94E1B762F8F05F8F17F2FB84',
     participant: undefined
   },
-  messageTimestamp: 1749314577,
-  pushName: '☆Kenia☆^^',
+  messageTimestamp: 1749927972,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Que carreras están en la utl',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Que carreras están en la utl',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: 'FDCFFFF6EACE8247C6D0BF907B2CB1F8',
+    participant: undefined
+  },
+  messageTimestamp: 1749927985,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Si',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: '7DC00C331F9CFB8DD8FAA4DBF20F0BA0',
+    participant: undefined
+  },
+  messageTimestamp: 1749928009,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Hablame sobre el punto 3',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Hablame sobre el punto 3',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: 'C599D4677CB8E524ED6E4699E0BFA6AD',
+    participant: undefined
+  },
+  messageTimestamp: 1749928023,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Gastronomía',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Gastronomía',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: '5766AE5686B0943AA3B9B8CA59F2475D',
+    participant: undefined
+  },
+  messageTimestamp: 1749928082,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Que horarios tiene industia',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Que horarios tiene industia',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: '6A8A239301E485D3256E1C43E2FAB107',
+    participant: undefined
+  },
+  messageTimestamp: 1749928088,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Si',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Si',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: '3F5F23C5F40FE261F7C0E08C4B59F0B0',
+    participant: undefined
+  },
+  messageTimestamp: 1749928099,
+  pushName: 'ElSpyn 🐤',
+  broadcast: false,
+  message: Message {
+    conversation: 'Consulta directa',
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'Consulta directa',
+  from: '5214725658628'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214725658628@s.whatsapp.net',
+    fromMe: false,
+    id: '7E90972174268F76952B444E666E50F2',
+    participant: undefined
+  },
+  messageTimestamp: 1749928104,
+  pushName: 'ElSpyn 🐤',
   broadcast: false,
   message: Message {
     conversation: 'No',
@@ -95,5 +229,5 @@
     }
   },
   body: 'No',
-  from: '5214722437560'
+  from: '5214725658628'
 }
