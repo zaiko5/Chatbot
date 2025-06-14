@@ -64,7 +64,7 @@ async function getPrompt() {
     try {
         conn = await db.getConnection(); // Get a connection from the pool
 
-        const [rows] = await conn.query("SELECT id, prompt as content FROM prompt WHERE id = 1");
+        const [rows] = await conn.query("SELECT id, prompt as content FROM prompt order by id desc limit 1");
 
         if (rows.length > 0) {
             return { id: 1, content: rows[0].content }; 
