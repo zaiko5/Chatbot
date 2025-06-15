@@ -24,20 +24,58 @@ const promptOrganizarPath = path.join(__dirname, "mensajes", "promptOrganizar.tx
 const promptOrganizar = fs.readFileSync(promptOrganizarPath, "utf8");
 
 
+// Flujo inicial que responde a "hola", "hi", etc.
+const flowEntrada = addKeyword([])
+    .addAnswer(saludo, {capture : true}, async(ctx, {from:destructuredFrom, gotoFlow,flowDynamic}) => {
+        const from = destructuredFrom || ctx.from;
+        const consulta = ctx.body;
+        console.log("flowConsultas - Valor de 'from':", from); 
+
+        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
+        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
+        const clasificacionTexto = respuestaClasificacionRaw.content.trim();
+
+        const promptR = await prompt();
+        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
+        let subtemaId = null;
+        const partesClasificacion = clasificacionTexto.split(' - ');
+        if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
+            const posibleSubtemaId = parseInt(partesClasificacion[0]);
+            if (!isNaN(posibleSubtemaId)){
+                subtemaId = posibleSubtemaId;
+            }
+        }
+        if (subtemaId ===null){
+            subtemaId = 0;
+        }
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
+
+        await guardarConsulta({
+            numero: from,
+            mensaje: consulta,
+            subtema_id : subtemaId,
+            respuesta: respuestaConsultaRaw
+        });
+
+        await flowDynamic(respuestaConsultaRaw.content);
+        return gotoFlow(flowSeguirConsultando);
+    });
+
+//Was added a flow when the answer is diferent to no or si/sí, but cases when the user answers siii, nooo, sip, etc, are not covered.
 const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
     .addAnswer(seguirConsulta, { capture: true }, async (ctx, { gotoFlow, flowDynamic }) => {
         const mensaje = ctx.body.trim().toLowerCase();
         const from = ctx.from;
 
-        if (mensaje === 'no') {
+        if (mensaje === 'no') { //Answer is no
             return gotoFlow(flowDespedida);
         }
 
-        if (mensaje === 'si' || mensaje === 'sí') {
+        if (mensaje === 'si' || mensaje === 'sí') { //Answer is yes
             return gotoFlow(flowConsultas); //Manda a flowConsultas para preguntar sobre su siguiente consulta.
         }
 
-        // Si no es "sí" o "no", lo tratamos como una consulta directamente
+        //If the answer is diferent to yes or no, the chatbot answers the message as a question directly.
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
@@ -71,19 +109,11 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
 
         await flowDynamic(respuestaConsultaRaw.content);
 
-        // Repetimos el flujo para seguir escuchando
+        //We repeat the flow to continue listening.
         return gotoFlow(flowSeguirConsultando);
     });
 
     
-    // Flujo por si el usuario dice "no"
-const flowDespedida = addKeyword(EVENTS.ACTION)
-    .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
-    .addAction(async({flowDynamic})=>{
-        await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
-    });
-
-
 // Flujo para cuando el usuario dice "sí"
 const flowConsultas = addKeyword(EVENTS.ACTION)
     .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, {gotoFlow, flowDynamic, from: destructuredFrom}) => {
@@ -125,41 +155,11 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
 
     });
 
-// Flujo inicial que responde a "hola", "hi", etc.
-const flowEntrada = addKeyword([])
-    .addAnswer(saludo, {capture : true}, async(ctx, {from:destructuredFrom, gotoFlow,flowDynamic}) => {
-        const from = destructuredFrom || ctx.from;
-        const consulta = ctx.body;
-        console.log("flowConsultas - Valor de 'from':", from); 
-
-        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
-        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
-        const clasificacionTexto = respuestaClasificacionRaw.content.trim();
-
-        const promptR = await prompt();
-        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
-        let subtemaId = null;
-        const partesClasificacion = clasificacionTexto.split(' - ');
-        if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
-            const posibleSubtemaId = parseInt(partesClasificacion[0]);
-            if (!isNaN(posibleSubtemaId)){
-                subtemaId = posibleSubtemaId;
-            }
-        }
-        if (subtemaId ===null){
-            subtemaId = 0;
-        }
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
-
-        await guardarConsulta({
-            numero: from,
-            mensaje: consulta,
-            subtema_id : subtemaId,
-            respuesta: respuestaConsultaRaw
-        });
-
-        await flowDynamic(respuestaConsultaRaw.content);
-        return gotoFlow(flowSeguirConsultando);
+    // Flujo por si el usuario dice "no"
+const flowDespedida = addKeyword(EVENTS.ACTION)
+    .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
+    .addAction(async({flowDynamic})=>{
+        await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
     });
     
 const main = async () => {
