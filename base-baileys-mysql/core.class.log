@@ -1,5 +1,6 @@
 [handleMsg]:  {
   key: {
+<<<<<<< HEAD
     remoteJid: '5214721542533@s.whatsapp.net',
     fromMe: false,
     id: '9BEB0A866597E49394038474ED623760',
@@ -7,6 +8,15 @@
   },
   messageTimestamp: 1749754753,
   pushName: 'Axel:)',
+=======
+    remoteJid: '5214721552574@s.whatsapp.net',
+    fromMe: false,
+    id: '35320170541F52B9E1CB07617AF00FFE',
+    participant: undefined
+  },
+  messageTimestamp: 1749924624,
+  pushName: '𝐼𝑉𝑂𝑁𝑁𝐸 ♥︎',
+>>>>>>> feature/changeGetPrompt
   broadcast: false,
   message: Message {
     conversation: 'Hola',
@@ -17,11 +27,19 @@
     }
   },
   body: 'Hola',
+<<<<<<< HEAD
   from: '5214721542533'
 }
 [QUEUE_SE_ENVIO]:  {
   ref: 'ans_d4df5994-2c50-4e86-abe0-379daa6fb4a2',
   keyword: 'key_a58ea8b0-fabd-491c-a33d-977bc439ea32',
+=======
+  from: '5214721552574'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_36cfbb77-4e58-457c-8bb4-32ad1d105df8',
+  keyword: 'key_83d7b2d0-63e0-4b6c-8e36-9b09fa6c0178',
+>>>>>>> feature/changeGetPrompt
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
@@ -35,11 +53,19 @@
     keyword: {},
     callback: false
   },
+<<<<<<< HEAD
   refSerialize: 'ff91bf48868981471514bb65bd00bf0d'
 }
 [QUEUE_SE_ENVIO]:  {
   ref: 'ans_a4d8a713-ab12-493c-b318-fc993eaa8ccb',
   keyword: 'ans_d4df5994-2c50-4e86-abe0-379daa6fb4a2',
+=======
+  refSerialize: '3088ae9019505e2497064448f7c5a617'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_69059117-e35c-44ac-8344-4fa65d42a583',
+  keyword: 'ans_36cfbb77-4e58-457c-8bb4-32ad1d105df8',
+>>>>>>> feature/changeGetPrompt
   answer: 'Haz tu consulta',
   options: {
     media: null,
@@ -53,6 +79,7 @@
     keyword: {},
     callback: true
   },
+<<<<<<< HEAD
   refSerialize: '986426db53b5c9cdd5598012490fdffc'
 }
 [handleMsg]:  {
@@ -67,12 +94,34 @@
   broadcast: false,
   message: Message {
     conversation: 'Campus',
+=======
+  refSerialize: '937a366729538de13bb40fc873d49ff9'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214721552574@s.whatsapp.net',
+    fromMe: false,
+    id: 'BC1DFC8EF059694AE528CF527A3A97F9',
+    participant: undefined
+  },
+  messageTimestamp: 1749924651,
+  pushName: '𝐼𝑉𝑂𝑁𝑁𝐸 ♥︎',
+  broadcast: false,
+  message: Message {
+    conversation: 'En que podrías apoyar?',
+>>>>>>> feature/changeGetPrompt
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
       deviceListMetadataVersion: 2,
       messageSecret: [Uint8Array]
     }
   },
+<<<<<<< HEAD
   body: 'Campus',
   from: '5214721542533'
+=======
+  status: 4,
+  body: 'En que podrías apoyar?',
+  from: '5214721552574'
+>>>>>>> feature/changeGetPrompt
 }
