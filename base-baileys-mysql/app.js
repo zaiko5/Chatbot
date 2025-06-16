@@ -34,7 +34,7 @@ const flowEntrada = addKeyword([])
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
-        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
+        await consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
     });
 
 //Was added a flow when the answer is diferent to no or si/sí, but cases when the user answers siii, nooo, sip, etc, are not covered.
@@ -55,7 +55,7 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
-        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
+        await consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
     });
 
     
@@ -66,13 +66,13 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
-        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
+        await consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
     });
 
     // Flujo por si el usuario dice "no"
 const flowDespedida = addKeyword(EVENTS.ACTION)
     .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
-    .addAction(async({flowDynamic})=>{
+    .addAction(async(_, {flowDynamic})=>{
         await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
     });
 
