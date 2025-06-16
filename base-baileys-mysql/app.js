@@ -11,7 +11,7 @@ const MySQLAdapter = require('@bot-whatsapp/database/mysql')
 const path = require("path");
 const fs = require("fs");
 const chat = require("./chatGPT");
-const { guardarConsulta, prompt, getImageUrlForSubtema } = require("./consultas.controllers.js"); // Correctly import both functions
+const { guardarConsulta, prompt, getImageUrlForSubtema, getResoomeForChat } = require("./consultas.controllers.js"); // Correctly import both functions
 
 // Leer archivos
 const saludoPath = path.join(__dirname, "mensajes", "saludo.txt");
