@@ -1,32 +1,26 @@
 [handleMsg]:  {
   key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
+    remoteJid: '5214761811897@s.whatsapp.net',
     fromMe: false,
-    id: '3F8C6A6C0883E58E82C999DB5FF664C7',
+    id: '3FCE0938EA2B46C5DEF0',
     participant: undefined
   },
-  messageTimestamp: 1750039386,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  messageTimestamp: 1750084208,
+  pushName: 'Benyi',
   broadcast: false,
   message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'okai',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
+    extendedTextMessage: ExtendedTextMessage { text: 'Hola', contextInfo: [ContextInfo] },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
+      deviceListMetadataVersion: 2
     }
   },
-  body: 'okai',
-  from: '5214773400954'
+  body: 'Hola',
+  from: '5214761811897'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_16b9b3d4-94ec-43c6-9754-52c2333038ed',
-  keyword: 'key_e4cf118e-0a95-4365-a6d8-8cd05cfcecef',
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
@@ -40,115 +34,34 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '4dbcb4fb02f8ffe87957d994a5ff6bc9'
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
+    remoteJid: '5214761811897@s.whatsapp.net',
     fromMe: false,
-    id: 'D7BD93B774E5D73F79BE7D2C779DB155',
+    id: '3F68DF203D80F0226FE5',
     participant: undefined
   },
-  messageTimestamp: 1750039395,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  messageTimestamp: 1750084213,
+  pushName: 'Benyi',
   broadcast: false,
   message: Message {
     extendedTextMessage: ExtendedTextMessage {
-      text: 'cuando son las fichas',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
+      text: 'Carreras',
+      contextInfo: [ContextInfo]
     },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
+      deviceListMetadataVersion: 2
     }
   },
-  body: 'cuando son las fichas',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: 'E893EEFE1BE6417AEB99FC299F497BC3',
-    participant: undefined
-  },
-  messageTimestamp: 1750039409,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'cuanto cuestan',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'cuanto cuestan',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '558005DF3E962B61FB549F4E4E8C16B8',
-    participant: undefined
-  },
-  messageTimestamp: 1750039426,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'nomas pregunte z el precio d la ficha',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'nomas pregunte z el precio d la ficha',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '7DDFD5B95B447A4DC880D1E645FB878A',
-    participant: undefined
-  },
-  messageTimestamp: 1750039428,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'ehh',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'ehh',
-  from: '5214773400954'
+  body: 'Carreras',
+  from: '5214761811897'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_16b9b3d4-94ec-43c6-9754-52c2333038ed',
-  keyword: 'key_e4cf118e-0a95-4365-a6d8-8cd05cfcecef',
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
@@ -162,193 +75,31 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '4dbcb4fb02f8ffe87957d994a5ff6bc9'
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
 }
 [handleMsg]:  {
   key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
+    remoteJid: '5214761811897@s.whatsapp.net',
     fromMe: false,
-    id: 'C9347D0CC674C96C7D1EF6F5469CE0DE',
+    id: '3FB6900DD4D27C809D39',
     participant: undefined
   },
-  messageTimestamp: 1750039435,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  messageTimestamp: 1750084219,
+  pushName: 'Benyi',
   broadcast: false,
   message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'no de todo',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
+    extendedTextMessage: ExtendedTextMessage { text: '.', contextInfo: [ContextInfo] },
     messageContextInfo: MessageContextInfo {
       deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
+      deviceListMetadataVersion: 2
     }
   },
-  body: 'no de todo',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: 'BCA648222EA3ED8DC42572CA93161CD2',
-    participant: undefined
-  },
-  messageTimestamp: 1750039439,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'JAJSJSK',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'JAJSJSK',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '45B4BBCCE9CB7C0D040017D8BD3796B7',
-    participant: undefined
-  },
-  messageTimestamp: 1750039452,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'increíble ehh',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'increíble ehh',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '8B5891B4A219AE9070001E6802C449C7',
-    participant: undefined
-  },
-  messageTimestamp: 1750039455,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'carreras',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'carreras',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '9FEF838E56A46F640402F139E3102843',
-    participant: undefined
-  },
-  messageTimestamp: 1750039469,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'cual es su programa de estudios',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'cual es su programa de estudios',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: '42384B865A8658665FDB91560169C583',
-    participant: undefined
-  },
-  messageTimestamp: 1750039483,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'JAJAJAJAKA',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'JAJAJAJAKA',
-  from: '5214773400954'
-}
-[handleMsg]:  {
-  key: {
-    remoteJid: '5214773400954@s.whatsapp.net',
-    fromMe: false,
-    id: 'D436423DD1E51703EF92FE7479220B9E',
-    participant: undefined
-  },
-  messageTimestamp: 1750039485,
-  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
-  broadcast: false,
-  message: Message {
-    extendedTextMessage: ExtendedTextMessage {
-      text: 'okei',
-      previewType: 0,
-      contextInfo: [ContextInfo],
-      inviteLinkGroupTypeV2: 0
-    },
-    messageContextInfo: MessageContextInfo {
-      deviceListMetadata: [DeviceListMetadata],
-      deviceListMetadataVersion: 2,
-      messageSecret: [Uint8Array]
-    }
-  },
-  body: 'okei',
-  from: '5214773400954'
+  body: '.',
+  from: '5214761811897'
 }
 [QUEUE_SE_ENVIO]:  {
-  ref: 'ans_16b9b3d4-94ec-43c6-9754-52c2333038ed',
-  keyword: 'key_e4cf118e-0a95-4365-a6d8-8cd05cfcecef',
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
   answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
   options: {
     media: null,
@@ -362,5 +113,242 @@
     keyword: {},
     callback: true
   },
-  refSerialize: '4dbcb4fb02f8ffe87957d994a5ff6bc9'
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214761811897@s.whatsapp.net',
+    fromMe: false,
+    id: '3F9098A514C0D0F391BE',
+    participant: undefined
+  },
+  messageTimestamp: 1750084224,
+  pushName: 'Benyi',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'Carreras',
+      contextInfo: [ContextInfo]
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'Carreras',
+  from: '5214761811897'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214761811897@s.whatsapp.net',
+    fromMe: false,
+    id: '3F2165F33C82BB9F3E98',
+    participant: undefined
+  },
+  messageTimestamp: 1750084253,
+  pushName: 'Benyi',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage { text: 'no', contextInfo: [ContextInfo] },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2
+    }
+  },
+  body: 'no',
+  from: '5214761811897'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214773400954@s.whatsapp.net',
+    fromMe: false,
+    id: '3BC5F1BD9228BD2C293F36B190087545',
+    participant: undefined
+  },
+  messageTimestamp: 1750084332,
+  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'pqqq',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'pqqq',
+  from: '5214773400954'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214773400954@s.whatsapp.net',
+    fromMe: false,
+    id: '52A5A848903757A6108F5F22E2124CC9',
+    participant: undefined
+  },
+  messageTimestamp: 1750084350,
+  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'mmsi',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'mmsi',
+  from: '5214773400954'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214773400954@s.whatsapp.net',
+    fromMe: false,
+    id: '6857549671A0D64F5EA2CB03D64BE0FA',
+    participant: undefined
+  },
+  messageTimestamp: 1750084358,
+  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'lo olvide bryan axel',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'lo olvide bryan axel',
+  from: '5214773400954'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
+}
+[handleMsg]:  {
+  key: {
+    remoteJid: '5214773400954@s.whatsapp.net',
+    fromMe: false,
+    id: 'E09EB9AAFB7DCAC8AD462CD8EDFE90AD',
+    participant: undefined
+  },
+  messageTimestamp: 1750084360,
+  pushName: '𝑨𝒍𝒆𝒙𝒊𝒂 🌹',
+  broadcast: false,
+  message: Message {
+    extendedTextMessage: ExtendedTextMessage {
+      text: 'perdóname',
+      previewType: 0,
+      contextInfo: [ContextInfo],
+      inviteLinkGroupTypeV2: 0
+    },
+    messageContextInfo: MessageContextInfo {
+      deviceListMetadata: [DeviceListMetadata],
+      deviceListMetadataVersion: 2,
+      messageSecret: [Uint8Array]
+    }
+  },
+  body: 'perdóname',
+  from: '5214773400954'
+}
+[QUEUE_SE_ENVIO]:  {
+  ref: 'ans_2baade74-09b7-4828-9408-15de09ddcf15',
+  keyword: 'key_534e8544-ae76-4778-a85d-7ea1dd8e1a63',
+  answer: '¡Hola! 👋 Soy tu Asistente de IA de la UTL, listo para ayudarte. ¿En qué puedo apoyarte hoy? 🤖✨',
+  options: {
+    media: null,
+    buttons: [],
+    capture: true,
+    child: null,
+    delay: 0,
+    idle: null,
+    ref: null,
+    nested: [],
+    keyword: {},
+    callback: true
+  },
+  refSerialize: '4bfcee07e1baf50b0f573407e292de3b'
 }
