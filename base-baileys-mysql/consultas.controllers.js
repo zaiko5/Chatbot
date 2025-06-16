@@ -109,9 +109,32 @@ async function getImageUrlForSubtema(subtemaId) {
     }
 }
 
+/**
+ * NUEVA FUNCION: Obtener las ultimas preguntas/respuestas en la conversacion para hacer un resumen al cahtbot de lo que se ha estado hablando en esta misma.
+ */
+async function getResoomeForChat(numero){
+    let conn;
+    try{
+        conn = await db.getConnection();
+
+        const [rows] = await conn.query ("select c.id, c.mensaje as usuario, r.mensaje as respuesta from consulta c join respuesta r on c.id = r.consulta_id join usuario u on u.id = c.usuario_id where c.subtema_id != 0 and u.numero_celular = ? order by c.id desc limit 10", [numero]) ;
+
+        return rows.reverse();
+        
+    }catch (error) {
+        console.error("Error al obtener la URL de la imagen del subtema:", error);
+        return null;
+    } finally {
+        if (conn) {
+            conn.release();
+        }
+    }
+}
+
 
 module.exports = {
     guardarConsulta,
     prompt: getPrompt, // Export getPrompt as 'prompt' to match main.js import
-    getImageUrlForSubtema // Exporta la nueva 
+    getImageUrlForSubtema,// Exporta la nueva 
+    getResoomeForChat
 };
