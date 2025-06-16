@@ -10,8 +10,8 @@ const MySQLAdapter = require('@bot-whatsapp/database/mysql')
 
 const path = require("path");
 const fs = require("fs");
-const chat = require("./chatGPT");
-const { guardarConsulta, prompt, getImageUrlForSubtema } = require("./consultas.controllers.js"); // Correctly import both functions
+const { chat, chatResoome } = require("./chatGPT");
+const { guardarConsulta, prompt, getImageUrlForSubtema, getResoomeForChat } = require("./consultas.controllers.js"); // Correctly import both functions
 
 // Leer archivos
 const saludoPath = path.join(__dirname, "mensajes", "saludo.txt");
@@ -22,6 +22,9 @@ const seguirConsulta = fs.readFileSync(seguirConsultandoPath, "utf8");
 
 const promptOrganizarPath = path.join(__dirname, "mensajes", "promptOrganizar.txt");
 const promptOrganizar = fs.readFileSync(promptOrganizarPath, "utf8");
+
+const promptResoomePath = path.join(__dirname, "mensajes", "promptResumen.txt");
+const promptResoome = fs.readFileSync(promptResoomePath, "utf8");
 
 
 // Flujo inicial que responde a "hola", "hi", etc.
@@ -48,7 +51,12 @@ const flowEntrada = addKeyword([])
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
+
+        //Obtener mensajes y resumen
+        const messages = await getResoomeForChat(ctx.from)
+        const resoome = await generarResumenDeConversacion(messages, promptResoome)
+
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
         const respuestaTexto = respuestaConsultaRaw.content; // Contenido de texto del LLM
 
         const urlImagen = await getImageUrlForSubtema(subtemaId); 
@@ -107,7 +115,11 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
             subtemaId = 0;
         }
 
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
+        //Obtener mensajes y resumen
+        const messages = await getResoomeForChat(ctx.from)
+        const resoome = await generarResumenDeConversacion(messages, promptResoome)
+
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
 
         await guardarConsulta({
             numero: from,
@@ -150,7 +162,11 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         if (subtemaId ===null){
             subtemaId = 0;
         }
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta);
+        //Obtener mensajes y resumen
+        const messages = await getResoomeForChat(ctx.from)
+        const resoome = await generarResumenDeConversacion(messages, promptResoome)
+
+        const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
 
         await guardarConsulta({
             numero: from,
@@ -170,6 +186,21 @@ const flowDespedida = addKeyword(EVENTS.ACTION)
     .addAction(async({flowDynamic})=>{
         await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
     });
+
+async function generarResumenDeConversacion(rows, promptBase) {
+    // Concatenar las consultas y respuestas en un solo texto
+    let conversacionCompleta = "";
+
+    for (const row of rows) {
+        conversacionCompleta += `Usuario: ${row.usuario}\n`;
+        conversacionCompleta += `Asistente: ${row.respuesta}\n`;
+    }
+
+    // Llamar a la función chat para obtener el resumen
+    const resultadoResumen = await chatResoome(promptBase, conversacionCompleta);
+
+    return resultadoResumen.content;
+}
     
 const main = async () => {
     const adapterDB = new MySQLAdapter({

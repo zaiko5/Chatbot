@@ -5,13 +5,40 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
 
-module.exports = async function chat(promptBase, userInput) {
+ async function chat(promptBase, userInput, resumenContexto) {
+    try {
+        // Armar el array de mensajes dinámico
+        const messages = [
+            { role: "system", content: promptBase }
+        ];
+
+        if (resumenContexto) {
+            // Agregamos el resumen como contexto previo (rol assistant o system)
+            messages.push({ role: "system", content: `Resumen del contexto previo: ${resumenContexto}` });
+        }
+
+        // Finalmente, el mensaje actual del usuario
+        messages.push({ role: "user", content: userInput });
+
+        const response = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: messages,
+        });
+
+        return response.choices[0].message;
+    } catch (error) {
+        console.error("Error al conectar con OpenAI:", error);
+        return { content: "Lo siento, hubo un error al procesar tu consulta." };
+    }
+};
+
+async function chatResoome(promptBase, messagesHistory) {
     try {
         const response = await openai.chat.completions.create({
             model: "gpt-3.5-turbo",
             messages: [
                 { role: "system", content: promptBase },
-                { role: "user", content: userInput }
+                { role: "user", content: messagesHistory }
             ],
         });
 
@@ -20,4 +47,9 @@ module.exports = async function chat(promptBase, userInput) {
         console.error("Error al conectar con OpenAI:", error);
         return { content: "Lo siento, hubo un error al procesar tu consulta." };
     }
+}
+
+module.exports = {
+    chat,
+    chatResoome
 };
