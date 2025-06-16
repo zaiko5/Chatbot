@@ -34,48 +34,7 @@ const flowEntrada = addKeyword([])
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
-        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
-        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
-        const clasificacionTexto = respuestaClasificacionRaw.content.trim();
-
-        const promptR = await prompt();
-        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
-        let subtemaId = null;
-        const partesClasificacion = clasificacionTexto.split(' - ');
-        if (partesClasificacion.length >0 && !clasificacionTexto.startsWith('0 -')){
-            const posibleSubtemaId = parseInt(partesClasificacion[0]);
-            if (!isNaN(posibleSubtemaId)){
-                subtemaId = posibleSubtemaId;
-            }
-        }
-        if (subtemaId ===null){
-            subtemaId = 0;
-        }
-
-        //Obtener mensajes y resumen
-        const messages = await getResoomeForChat(ctx.from)
-        const resoome = await generarResumenDeConversacion(messages, promptResoome)
-
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
-        const respuestaTexto = respuestaConsultaRaw.content; // Contenido de texto del LLM
-
-        const urlImagen = await getImageUrlForSubtema(subtemaId); 
-        console.log(`URL de imagen para subtema ${subtemaId}:`, urlImagen); // Para depuración
-
-
-        await guardarConsulta({
-            numero: from,
-            mensaje: consulta,
-            subtema_id : subtemaId,
-            respuesta: respuestaConsultaRaw
-        });
-
-        if (urlImagen) {
-            await flowDynamic([{ body: respuestaTexto, media: urlImagen }]);
-        } else {
-            await flowDynamic(respuestaTexto);
-        }
-        return gotoFlow(flowSeguirConsultando);
+        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
     });
 
 //Was added a flow when the answer is diferent to no or si/sí, but cases when the user answers siii, nooo, sip, etc, are not covered.
@@ -96,7 +55,44 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         const consulta = ctx.body;
         console.log("flowConsultas - Valor de 'from':", from); 
 
-        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
+        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
+    });
+
+    
+// Flujo para cuando el usuario dice "sí"
+const flowConsultas = addKeyword(EVENTS.ACTION)
+    .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, {gotoFlow, flowDynamic, from: destructuredFrom}) => {
+        const from = destructuredFrom || ctx.from;
+        const consulta = ctx.body;
+        console.log("flowConsultas - Valor de 'from':", from); 
+
+        consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from)
+    });
+
+    // Flujo por si el usuario dice "no"
+const flowDespedida = addKeyword(EVENTS.ACTION)
+    .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
+    .addAction(async({flowDynamic})=>{
+        await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
+    });
+
+async function generarResumenDeConversacion(rows, promptBase) {
+    // Concatenar las consultas y respuestas en un solo texto
+    let conversacionCompleta = "";
+
+    for (const row of rows) {
+        conversacionCompleta += `Usuario: ${row.usuario}\n`;
+        conversacionCompleta += `Asistente: ${row.respuesta}\n`;
+    }
+
+    // Llamar a la función chat para obtener el resumen
+    const resultadoResumen = await chatResoome(promptBase, conversacionCompleta);
+
+    return resultadoResumen.content;
+}
+
+async function consultFunc(promptOrganizar, consulta, ctx, gotoFlow, flowDynamic, from) {
+    const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
         console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
         const clasificacionTexto = respuestaClasificacionRaw.content.trim();
 
@@ -126,7 +122,7 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         console.log(`URL de imagen para subtema ${subtemaId}:`, urlImagen); // Para depuración
 
         await guardarConsulta({
-            numero: from,
+            numero: ctx.from,
             mensaje: consulta,
             subtema_id: subtemaId,
             respuesta: respuestaConsultaRaw,
@@ -138,81 +134,6 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
             await flowDynamic(respuestaTexto);
         }
         return gotoFlow(flowSeguirConsultando);
-    });
-
-    
-// Flujo para cuando el usuario dice "sí"
-const flowConsultas = addKeyword(EVENTS.ACTION)
-    .addAnswer("Haz tu consulta:", { capture: true }, async (ctx, {gotoFlow, flowDynamic, from: destructuredFrom}) => {
-        const from = destructuredFrom || ctx.from;
-        const consulta = ctx.body;
-        console.log("flowConsultas - Valor de 'from':", from); 
-
-        const respuestaClasificacionRaw = await chat(promptOrganizar, consulta);
-        console.log("Respuesta cruda de clasificación:", respuestaClasificacionRaw); 
-        const clasificacionTexto = respuestaClasificacionRaw.content.trim();
-
-        
-
-        const promptR = await prompt(); 
-        const promptTextForChat = promptR ? promptR.content : ""; // Add this line
-        let subtemaId = null;
-        const partesClasificacion = clasificacionTexto.split(' - ');
-        if (partesClasificacion.length > 0 && !clasificacionTexto.startsWith('0 -')){
-            const posibleSubtemaId = parseInt(partesClasificacion[0]);
-            if (!isNaN(posibleSubtemaId)){
-                subtemaId = posibleSubtemaId;
-            }
-        }
-        
-        if (subtemaId ===null){
-            subtemaId = 0;
-        }
-        //Obtener mensajes y resumen
-        const messages = await getResoomeForChat(ctx.from)
-        const resoome = await generarResumenDeConversacion(messages, promptResoome)
-
-        const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
-        const respuestaTexto = respuestaConsultaRaw.content; // Contenido de texto del LLM
-
-        const urlImagen = await getImageUrlForSubtema(subtemaId); 
-        console.log(`URL de imagen para subtema ${subtemaId}:`, urlImagen); // Para depuración
-
-        await guardarConsulta({
-            numero: from,
-            mensaje: consulta,
-            subtema_id: subtemaId,
-            respuesta: respuestaConsultaRaw
-        });
-
-        if (urlImagen) {
-            await flowDynamic([{ body: respuestaTexto, media: urlImagen }]);
-        } else {
-            await flowDynamic(respuestaTexto);
-        }
-        return gotoFlow(flowSeguirConsultando);
-    });
-
-    // Flujo por si el usuario dice "no"
-const flowDespedida = addKeyword(EVENTS.ACTION)
-    .addAnswer('Gracias por hacer uso del chatbot UTL. ¡Hasta luego! 👋')
-    .addAction(async({flowDynamic})=>{
-        await flowDynamic('Si existe algo mas, no dudes en contactarnos!');
-    });
-
-async function generarResumenDeConversacion(rows, promptBase) {
-    // Concatenar las consultas y respuestas en un solo texto
-    let conversacionCompleta = "";
-
-    for (const row of rows) {
-        conversacionCompleta += `Usuario: ${row.usuario}\n`;
-        conversacionCompleta += `Asistente: ${row.respuesta}\n`;
-    }
-
-    // Llamar a la función chat para obtener el resumen
-    const resultadoResumen = await chatResoome(promptBase, conversacionCompleta);
-
-    return resultadoResumen.content;
 }
     
 const main = async () => {
@@ -223,7 +144,7 @@ const main = async () => {
         password: process.env.MYSQL_DB_PASSWORD,
         port: parseInt(process.env.MYSQL_DB_PORT || '3306'),
     })
-    const adapterFlow = createFlow([flowSeguirConsultando,flowEntrada ,flowConsultas])
+    const adapterFlow = createFlow([flowSeguirConsultando,flowEntrada ,flowConsultas, flowDespedida])
     const adapterProvider = createProvider(BaileysProvider)
     createBot({
         flow: adapterFlow,
