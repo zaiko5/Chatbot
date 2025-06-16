@@ -2,8 +2,6 @@ const db = require('./db');
 
 function getCurrentWeek(){
     const ahora = new Date;
-    const año = ahora.getFullYear();
-    const mes = ahora.getMonth() + 1;  
     const dia = ahora.getDate();
     return semanaDelMes = Math.floor((dia - 1) / 7) + 1;z
 }
