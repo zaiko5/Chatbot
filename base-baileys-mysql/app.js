@@ -120,6 +120,10 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
         const resoome = await generarResumenDeConversacion(messages, promptResoome)
 
         const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
+        const respuestaTexto = respuestaConsultaRaw.content; // Contenido de texto del LLM
+
+        const urlImagen = await getImageUrlForSubtema(subtemaId); 
+        console.log(`URL de imagen para subtema ${subtemaId}:`, urlImagen); // Para depuración
 
         await guardarConsulta({
             numero: from,
@@ -128,9 +132,11 @@ const flowSeguirConsultando = addKeyword(EVENTS.ACTION)
             respuesta: respuestaConsultaRaw,
         });
 
-        await flowDynamic(respuestaConsultaRaw.content);
-
-        //We repeat the flow to continue listening.
+        if (urlImagen) {
+            await flowDynamic([{ body: respuestaTexto, media: urlImagen }]);
+        } else {
+            await flowDynamic(respuestaTexto);
+        }
         return gotoFlow(flowSeguirConsultando);
     });
 
@@ -167,6 +173,10 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
         const resoome = await generarResumenDeConversacion(messages, promptResoome)
 
         const respuestaConsultaRaw = await chat(promptTextForChat, consulta, resoome);
+        const respuestaTexto = respuestaConsultaRaw.content; // Contenido de texto del LLM
+
+        const urlImagen = await getImageUrlForSubtema(subtemaId); 
+        console.log(`URL de imagen para subtema ${subtemaId}:`, urlImagen); // Para depuración
 
         await guardarConsulta({
             numero: from,
@@ -175,9 +185,12 @@ const flowConsultas = addKeyword(EVENTS.ACTION)
             respuesta: respuestaConsultaRaw
         });
 
-        await flowDynamic(respuestaConsultaRaw.content);
+        if (urlImagen) {
+            await flowDynamic([{ body: respuestaTexto, media: urlImagen }]);
+        } else {
+            await flowDynamic(respuestaTexto);
+        }
         return gotoFlow(flowSeguirConsultando);
-
     });
 
     // Flujo por si el usuario dice "no"
